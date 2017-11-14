@@ -17,6 +17,7 @@ class Header extends React.Component {
       default:
         return [
           <li key={i++}><Payments/></li>,
+          <li key={i++}>Credits: {this.props.auth.credits} </li>,
           <li key={i++}><a href={'/api/logout'}>Logout</a></li>,
         ];
     }
@@ -29,7 +30,7 @@ class Header extends React.Component {
           <Link to={this.props.auth ? '/surveys' : '/'} className="left brand-logo">
             Emaily
           </Link>
-          <ul className="right hide-on-med-and-down">
+          <ul className="right hide-on-small-and-down">
             {this.renderLogin()}
           </ul>
         </div>
