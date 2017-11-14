@@ -2,17 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchUser } from "../actions";
 import { Link } from "react-router-dom";
+import Payments from "./Payments";
 
 
 class Header extends React.Component {
   renderLogin() {
+    let i = 0;
+
     switch (this.props.auth) {
       case null:
         return '';
       case false:
-        return <a href={'/auth/google'}>Login with Google</a>;
+        return <li><a href={'/auth/google'}>Login with Google</a></li>;
       default:
-        return <a href={'/api/logout'}>Logout</a>;
+        return [
+          <li key={i++}><Payments/></li>,
+          <li key={i++}><a href={'/api/logout'}>Logout</a></li>,
+        ];
     }
   }
 
@@ -24,7 +30,7 @@ class Header extends React.Component {
             Emaily
           </Link>
           <ul className="right hide-on-med-and-down">
-            <li>{this.renderLogin()}</li>
+            {this.renderLogin()}
           </ul>
         </div>
       </nav>
