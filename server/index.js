@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const keys = require('./config/keys');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 
 // Init mongo schemas
@@ -27,6 +28,13 @@ app.use(passport.session());
 // Init routes
 require('./routes/auth')(app);
 require('./routes/billing')(app);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
+  });
+}
 
 // Start services
 mongoose.connect(keys.mongoURL);
