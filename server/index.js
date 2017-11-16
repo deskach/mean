@@ -9,6 +9,7 @@ const path = require('path');
 
 // Init mongo schemas
 require('./models/user');
+require('./models/survey');
 
 // Init passport
 require('./services/passport');
