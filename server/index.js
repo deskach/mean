@@ -29,6 +29,7 @@ app.use(passport.session());
 // Init routes
 require('./routes/auth')(app);
 require('./routes/billing')(app);
+require('./routes/survey')(app);
 
 if (process.env.NODE_ENV === 'production') {
   const clientPath = path.resolve(__dirname, '..', 'client', 'build');
