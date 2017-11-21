@@ -5,3 +5,8 @@
 #btn-credits {
   margin: 0 1rem;
 }
+
+.form-error {
+  color: red;
+  margin-top: .5rem;
+}
